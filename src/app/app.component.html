@@ -1,44 +1,8 @@
 <form nz-form [formGroup]="formData">
   <nz-collapse formArrayName="filters">
     <nz-collapse-panel nzHeader="Hello" nzActive="true" *ngFor="let filter of filtersGroup.controls; let i = index"
-      [nzExtra]="panelHeader" [formGroupName]="i">
-      <nz-form-item>
-        <nz-form-label [nzSm]="3" [nzXs]="24">Case Type</nz-form-label>
-        <nz-form-control class="field-label">
-          <nz-select formControlName="caseType">
-            <nz-option></nz-option>
-          </nz-select>
-        </nz-form-control>
-      </nz-form-item>
-      <div formArrayName="dynamicFields">
-        <nz-form-item *ngFor="let field of dynamicFields(i).controls; let fieldIdx = index" [formGroupName]="fieldIdx">
-          <nz-form-control [nzSm]="3" [nzXs]="24">
-            <nz-select class="filter-field" nzDropdownClassName="filter-field-dropdown" formControlName="fieldName">
-              <nz-option *ngFor="let opt of filterFields | fieldExclude: dynamicFields(i).value: fieldIdx"
-                [nzValue]="opt" [nzLabel]="opt.label">
-              </nz-option>
-            </nz-select>
-          </nz-form-control>
-          <nz-form-control>
-            <ng-container *ngIf="field.get('fieldName')?.value?.type === 'select'; else default">
-              <nz-select formControlName="fieldValue" class="field-input">
-                <nz-option nzValue="test" nzLabel="test"></nz-option>
-              </nz-select>
-            </ng-container>
-            <ng-template #default>
-              <input nz-input formControlName="fieldValue" class="field-input">
-            </ng-template>
-            <i nz-icon nzType="minus-circle-o" class="dynamic-delete-button"
-              (click)="removeField(dynamicFields(i), fieldIdx, $event)"></i>
-          </nz-form-control>
-        </nz-form-item>
-      </div>
-      <nz-form-item>
-        <nz-form-control [nzSpan]="21" [nzOffset]="3">
-          <button nz-button nzType="link" (click)="addField(i)"
-            [disabled]="filterFields.length === dynamicFields(i).controls.length">Add Field</button>
-        </nz-form-control>
-      </nz-form-item>
+      [nzExtra]="panelHeader">
+      <app-filter [formGroupName]="i"></app-filter>
       <ng-template #panelHeader>
         <button nz-button nzType="link" (click)="removeFilter(i, $event)">Delete</button>
       </ng-template>

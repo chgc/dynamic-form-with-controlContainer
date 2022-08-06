@@ -17,6 +17,8 @@ import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { FieldExcludePipe } from './field-exclude.pipe';
+import { FilterComponent } from './filter/filter.component';
+import { FilterFieldComponent } from './filter/filter-field/filter-field.component';
 
 const NzMdoules = [
   NzFormModule,
@@ -31,7 +33,7 @@ const NzMdoules = [
 registerLocaleData(en);
 
 @NgModule({
-  declarations: [AppComponent, FieldExcludePipe],
+  declarations: [AppComponent, FieldExcludePipe, FilterComponent, FilterFieldComponent],
   imports: [
     BrowserModule,
     FormsModule,

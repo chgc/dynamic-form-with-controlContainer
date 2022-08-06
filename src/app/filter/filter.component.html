@@ -1,0 +1,12 @@
+<ng-container [formGroup]="formGroup">
+  <nz-form-item>
+    <nz-form-label [nzSm]="3" [nzXs]="24">Case Type</nz-form-label>
+    <nz-form-control class="field-label">
+      <nz-select formControlName="caseType">
+        <nz-option></nz-option>
+      </nz-select>
+    </nz-form-control>
+  </nz-form-item>
+  <app-filter-field formArrayName="dynamicFields" [filterFields]="filterFields">
+  </app-filter-field>
+</ng-container>
