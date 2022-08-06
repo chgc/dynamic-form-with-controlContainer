@@ -16,7 +16,6 @@ export class FilterFieldComponent implements OnInit {
   @Input() filterFields: any[] = [];
 
   formData!: FormArray;
-  fieldIdx!: number;
 
   constructor(private controlContainer: ControlContainer) {}
 

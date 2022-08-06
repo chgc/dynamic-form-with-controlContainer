@@ -8,6 +8,7 @@ export class FieldExcludePipe implements PipeTransform {
     const selectedFields = controls
       .filter((x, idx) => x.fieldName != null && idx !== currentIdx)
       .map((x) => x.fieldName.value);
+    console.log(selectedFields);
     return value.filter((x) => !selectedFields.includes(x.value));
   }
 }
